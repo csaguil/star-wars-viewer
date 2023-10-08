@@ -79,16 +79,16 @@ const PlanetTable = () => {
                                         {planet.climate}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.diameter)}
+                                        {displayNumber(planet.diameter)} KM
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.population)}
+                                        {displayNumber(planet.population)} people
                                     </td>
                                     <td className="planet-table-cell">
                                         {planet.terrain}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.rotation_period)}
+                                        {displayNumber(planet.rotation_period)} standard hours
                                     </td>
                                 </tr>
                             ))}
