@@ -41,7 +41,114 @@ const PlanetDetail = () => {
                         </a>
 
                         <h1 className="title">{planet.name}</h1>
-                        {JSON.stringify(planet)}
+                        <table className="planet-table">
+                            <tbody>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Name</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.name}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Rotation Period</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.rotation_period}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Orbital Period</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.orbital_period}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Diameter</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.diameter}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Climate</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.climate}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Gravity</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.gravity}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Terrain</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.terrain}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Surface Water</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.surface_water}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Population</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.population}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Residents</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.residents?.join(', ')}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Films</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.films?.join(', ')}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Created</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.created}
+                                    </td>
+                                </tr>
+                                <tr className="planet-table-row">
+                                    <td className="planet-table-cell">
+                                        <strong>Edited</strong>
+                                    </td>
+                                    <td className="planet-table-cell">
+                                        {planet.edited}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </>
                 )}
             </div>
