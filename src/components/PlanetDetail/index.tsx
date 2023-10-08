@@ -3,6 +3,7 @@ import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import type { Planet } from '../../types/Planet';
 import './PlanetDetail.css';
 import api from '../../utils/api';
+import { displayDate } from '../../utils/dateUtils';
 
 const PlanetDetail = () => {
     const { id } = useParams();
@@ -136,7 +137,7 @@ const PlanetDetail = () => {
                                         <strong>Created</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.created}
+                                        {displayDate(planet.created)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -144,7 +145,7 @@ const PlanetDetail = () => {
                                         <strong>Edited</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.edited}
+                                        {displayDate(planet.edited)}
                                     </td>
                                 </tr>
                             </tbody>
