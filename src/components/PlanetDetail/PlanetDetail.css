@@ -1,0 +1,21 @@
+.container {
+    padding: 20px;
+}
+
+.table-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.property {
+    margin-bottom: 10px;
+}
+
+.property strong {
+    margin-right: 5px;
+}

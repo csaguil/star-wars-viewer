@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import PlanetTable from './components/PlanetTable';
+import PlanetDetail from './components/PlanetDetail';
 
 const Home = () => {
     return (
@@ -14,17 +15,6 @@ const Home = () => {
     );
 };
 
-const PlanetDetail = () => {
-    const { id } = useParams();
-
-    return (
-        <div className="container">
-            <div className="table-container">
-                <h1 className="title">Planet {id}</h1>
-            </div>
-        </div>
-    );
-};
 const App = () => {
     return (
         <Router>

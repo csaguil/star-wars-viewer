@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import type { Planet } from '../types/Planet';
 
@@ -6,6 +7,7 @@ const PlanetTable = () => {
     const [planets, setPlanets] = useState<Array<Planet>>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getPlanets() {
@@ -60,7 +62,15 @@ const PlanetTable = () => {
                         </thead>
                         <tbody>
                             {planets.map((planet, index) => (
-                                <tr key={index} className="planet-table-row">
+                                <tr
+                                    key={index}
+                                    className="planet-table-row"
+                                    onClick={() => {
+                                        navigate(`/planets/${index}`, {
+                                            state: { planet: planets[index] }
+                                        });
+                                    }}
+                                >
                                     <td className="planet-table-cell">
                                         {planet.name}
                                     </td>
