@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import type { Planet } from '../../types/Planet';
 import './PlanetDetail.css';
 import api from '../../utils/api';
@@ -8,6 +7,7 @@ import api from '../../utils/api';
 const PlanetDetail = () => {
     const { id } = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
     const [planet, setPlanet] = useState<Planet | null>(
         location.state?.planet ?? null
     );
@@ -23,11 +23,23 @@ const PlanetDetail = () => {
         }
     }, []);
 
+    const handleBack = () => {
+        navigate('/');
+    };
+
     return (
         <div className="container">
             <div className="table-container">
                 {planet && (
                     <>
+                        <a
+                            className="back-button"
+                            onClick={handleBack}
+                            href="/"
+                        >
+                            {'<-'} Back
+                        </a>
+
                         <h1 className="title">{planet.name}</h1>
                         {JSON.stringify(planet)}
                     </>

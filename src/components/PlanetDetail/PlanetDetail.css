@@ -19,3 +19,13 @@
 .property strong {
     margin-right: 5px;
 }
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
