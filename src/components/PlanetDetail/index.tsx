@@ -13,6 +13,7 @@ const PlanetDetail = () => {
     const [planet, setPlanet] = useState<Planet | null>(
         location.state?.planet ?? null
     );
+    const [residentNames, setResidentNames] = useState<Array<string>>([]);
 
     useEffect(() => {
         async function getPlanet(planetId: number) {
@@ -24,6 +25,23 @@ const PlanetDetail = () => {
             getPlanet(idAsNumber);
         }
     }, []);
+
+    useEffect(() => {
+        async function getResidentNames() {
+            const urls = planet?.residents ?? [];
+            const promises = urls.map((url) => {
+                return fetch(url)
+                    .then((res) => res.json())
+                    .then((data) => data);
+            });
+            const responses = await Promise.all(promises);
+            const names: Array<string> = responses.map((res) => res.name);
+            setResidentNames(names);
+        }
+        if (planet && 'residents' in planet) {
+            getResidentNames();
+        }
+    }, [planet]);
 
     const handleBack = () => {
         navigate('/');
@@ -125,7 +143,7 @@ const PlanetDetail = () => {
                                         <strong>Residents</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.residents?.join(', ')}
+                                        {residentNames.join(', ')}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">

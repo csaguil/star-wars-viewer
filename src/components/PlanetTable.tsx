@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import type { Planet } from '../types/Planet';
-import {displayNumber} from "../utils/numberUtils";
+import { displayNumber } from '../utils/numberUtils';
 
 const PlanetTable = () => {
     const [planets, setPlanets] = useState<Array<Planet>>([]);
@@ -85,13 +85,15 @@ const PlanetTable = () => {
                                         {displayNumber(planet.diameter)} KM
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.population)} people
+                                        {displayNumber(planet.population)}{' '}
+                                        people
                                     </td>
                                     <td className="planet-table-cell">
                                         {planet.terrain}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.rotation_period)} standard hours
+                                        {displayNumber(planet.rotation_period)}{' '}
+                                        standard hours
                                     </td>
                                 </tr>
                             ))}
@@ -102,7 +104,9 @@ const PlanetTable = () => {
                             className="load-more-button"
                             onClick={loadMorePlanets}
                         >
-                            {isLoadingMorePlanets ? 'Loading...' : 'Load more planets'}
+                            {isLoadingMorePlanets
+                                ? 'Loading...'
+                                : 'Load more planets'}
                         </button>
                     )}
                 </>
