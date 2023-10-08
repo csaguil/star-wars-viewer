@@ -94,12 +94,14 @@ const PlanetTable = () => {
                             ))}
                         </tbody>
                     </table>
-                    <button
-                        className="load-more-button"
-                        onClick={loadMorePlanets}
-                    >
-                        Load more planets
-                    </button>
+                    {nextPageUrl && (
+                        <button
+                            className="load-more-button"
+                            onClick={loadMorePlanets}
+                        >
+                            Load more planets
+                        </button>
+                    )}
                 </>
             )}
         </div>
