@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import type { Planet } from '../types/Planet';
+import {displayNumber} from "../utils/numberUtils";
 
 const PlanetTable = () => {
     const [planets, setPlanets] = useState<Array<Planet>>([]);
@@ -78,16 +79,16 @@ const PlanetTable = () => {
                                         {planet.climate}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.diameter}
+                                        {displayNumber(planet.diameter)}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.population}
+                                        {displayNumber(planet.population)}
                                     </td>
                                     <td className="planet-table-cell">
                                         {planet.terrain}
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.rotation_period}
+                                        {displayNumber(planet.rotation_period)}
                                     </td>
                                 </tr>
                             ))}

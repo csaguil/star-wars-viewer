@@ -4,6 +4,7 @@ import type { Planet } from '../../types/Planet';
 import './PlanetDetail.css';
 import api from '../../utils/api';
 import { displayDate } from '../../utils/dateUtils';
+import {displayNumber} from "../../utils/numberUtils";
 
 const PlanetDetail = () => {
     const { id } = useParams();
@@ -57,7 +58,7 @@ const PlanetDetail = () => {
                                         <strong>Rotation Period</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.rotation_period}
+                                        {displayNumber(planet.rotation_period)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -65,7 +66,7 @@ const PlanetDetail = () => {
                                         <strong>Orbital Period</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.orbital_period}
+                                        {displayNumber(planet.orbital_period)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -73,7 +74,7 @@ const PlanetDetail = () => {
                                         <strong>Diameter</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.diameter}
+                                        {displayNumber(planet.diameter)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -105,7 +106,7 @@ const PlanetDetail = () => {
                                         <strong>Surface Water</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.surface_water}
+                                        {displayNumber(planet.surface_water)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -113,7 +114,7 @@ const PlanetDetail = () => {
                                         <strong>Population</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {planet.population}
+                                        {displayNumber(planet.population)}
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
