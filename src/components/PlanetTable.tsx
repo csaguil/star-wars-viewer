@@ -7,6 +7,7 @@ import {displayNumber} from "../utils/numberUtils";
 const PlanetTable = () => {
     const [planets, setPlanets] = useState<Array<Planet>>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingMorePlanets, setIsLoadingMorePlanets] = useState(false);
     const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ const PlanetTable = () => {
     }, []);
 
     async function loadMorePlanets() {
+        setIsLoadingMorePlanets(true);
         if (nextPageUrl) {
             const res = await fetch(nextPageUrl);
             const data = await res.json();
@@ -36,6 +38,7 @@ const PlanetTable = () => {
                 setNextPageUrl(data.next);
             }
         }
+        setIsLoadingMorePlanets(false);
     }
 
     return (
@@ -99,7 +102,7 @@ const PlanetTable = () => {
                             className="load-more-button"
                             onClick={loadMorePlanets}
                         >
-                            Load more planets
+                            {isLoadingMorePlanets ? 'Loading...' : 'Load more planets'}
                         </button>
                     )}
                 </>

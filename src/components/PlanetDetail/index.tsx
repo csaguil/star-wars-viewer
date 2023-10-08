@@ -4,7 +4,7 @@ import type { Planet } from '../../types/Planet';
 import './PlanetDetail.css';
 import api from '../../utils/api';
 import { displayDate } from '../../utils/dateUtils';
-import {displayNumber} from "../../utils/numberUtils";
+import { displayNumber } from '../../utils/numberUtils';
 
 const PlanetDetail = () => {
     const { id } = useParams();
@@ -58,7 +58,8 @@ const PlanetDetail = () => {
                                         <strong>Rotation Period</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.rotation_period)} standard hours
+                                        {displayNumber(planet.rotation_period)}{' '}
+                                        standard hours
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -66,7 +67,8 @@ const PlanetDetail = () => {
                                         <strong>Orbital Period</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.orbital_period)} standard days
+                                        {displayNumber(planet.orbital_period)}{' '}
+                                        standard days
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
@@ -114,7 +116,8 @@ const PlanetDetail = () => {
                                         <strong>Population</strong>
                                     </td>
                                     <td className="planet-table-cell">
-                                        {displayNumber(planet.population)} people
+                                        {displayNumber(planet.population)}{' '}
+                                        people
                                     </td>
                                 </tr>
                                 <tr className="planet-table-row">
