@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import api from './utils/api';
+import type { Planet } from './types/Planet';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [planets, setPlanets] = useState<Array<Planet>>([]);
+    const [selectedIdx, setSelectedIdx] = useState(-1);
+
+    useEffect(() => {
+        async function getPlanets() {
+            const data = await api.planets();
+            if ('results' in data) {
+                setPlanets(data.results);
+            }
+        }
+        getPlanets();
+    }, []);
+    return (
+        <div className="container">
+            <div className="table-container">
+                <h1 className="title">Star Wars Planet Explorer</h1>
+                {planets.length > 0 && (
+                    <table className="planet-table">
+                        <thead className="planet-table-header">
+                        <tr>
+                            <th className="planet-table-cell">Planet Name</th>
+                            <th className="planet-table-cell">Climate</th>
+                            <th className="planet-table-cell">Diameter</th>
+                            <th className="planet-table-cell">Population</th>
+                            <th className="planet-table-cell">Terrain</th>
+                            <th className="planet-table-cell">Rotation Period</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {planets.map((planet, index) => (
+                            <tr key={index} className="planet-table-row">
+                                <td className="planet-table-cell">{planet.name}</td>
+                                <td className="planet-table-cell">{planet.climate}</td>
+                                <td className="planet-table-cell">{planet.diameter}</td>
+                                <td className="planet-table-cell">{planet.population}</td>
+                                <td className="planet-table-cell">{planet.terrain}</td>
+                                <td className="planet-table-cell">{planet.rotation_period}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default App;
