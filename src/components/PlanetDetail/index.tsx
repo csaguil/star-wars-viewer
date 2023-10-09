@@ -43,7 +43,8 @@ const PlanetDetail = () => {
         }
     }, [planet]);
 
-    const handleBack = () => {
+    const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
         navigate('/');
     };
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import PlanetTable from './components/PlanetTable';
 import PlanetDetail from './components/PlanetDetail';
+import { PlanetProvider } from './contexts/PlanetContext';
 
 const Home = () => {
     return (
@@ -17,12 +18,14 @@ const Home = () => {
 
 const App = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/planets/:id" element={<PlanetDetail />} />
-            </Routes>
-        </Router>
+        <PlanetProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/planets/:id" element={<PlanetDetail />} />
+                </Routes>
+            </Router>
+        </PlanetProvider>
     );
 };
 

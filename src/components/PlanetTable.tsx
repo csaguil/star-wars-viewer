@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
-import type { Planet } from '../types/Planet';
 import { displayNumber } from '../utils/numberUtils';
+import { usePlanetContext } from '../contexts/PlanetContext';
 
 const PlanetTable = () => {
-    const [planets, setPlanets] = useState<Array<Planet>>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { planets, updatePlanets, nextPageUrl, setNextPageUrl } =
+        usePlanetContext();
+    const [isLoading, setIsLoading] = useState(planets.length === 0);
     const [isLoadingMorePlanets, setIsLoadingMorePlanets] = useState(false);
-    const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         async function getPlanets() {
             const data = await api.planets();
             if ('results' in data) {
-                setPlanets(data.results);
+                updatePlanets(data.results);
             }
             if ('next' in data) {
                 setNextPageUrl(data.next);
             }
             setIsLoading(false);
         }
-        getPlanets();
+        if (planets.length === 0) {
+            getPlanets();
+        }
     }, []);
 
     async function loadMorePlanets() {
@@ -32,7 +35,7 @@ const PlanetTable = () => {
             const data = await res.json();
             if ('results' in data) {
                 const newPlanets = [...planets, ...data.results];
-                setPlanets(newPlanets);
+                updatePlanets(newPlanets);
             }
             if ('next' in data) {
                 setNextPageUrl(data.next);
